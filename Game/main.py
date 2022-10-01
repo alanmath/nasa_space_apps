@@ -23,10 +23,10 @@ def inicializa ():
         'frente' : [pygame.image.load('img/frente.png'), pygame.image.load('img/frente_anda_d.png'), pygame.image.load('img/frente_anda_e.png')],
         'ladod' : [pygame.image.load('img/lado_d.png'), pygame.image.load('img/lado_anda_d.png'), pygame.image.load('img/lado_anda_d2.png')],
         'ladoe' : [pygame.image.load('img/lado_e.png'), pygame.image.load('img/lado_anda_e.png'), pygame.image.load('img/lado_anda_e2.png')],
-        'mapa' : [pygame.image.load('img/fase1.png'), pygame.image.load('img/menu.png'), pygame.image.load('img/fase2.png'), pygame.image.load('img/fase3.png')],
+        'mapa' : [pygame.image.load('img/WhatsApp Image 2022-10-01 at 17.53.13.jpeg'), pygame.image.load('img/menu.png'), pygame.image.load('img/fase2.png'), pygame.image.load('img/fase3.png')],
         'key' : [pygame.image.load('img/papeis.png')],
         "porta" : pygame.image.load('img/porta.png'),
-        'menu_principal': pygame.image.load('img/fundo_menu.png'), 'vitoria': pygame.image.load('img/vitoria.png') , 'derrota': pygame.image.load('img/derrota.png'),
+        'menu_principal': pygame.image.load('img/inicio.jpeg'), 'vitoria': pygame.image.load('img/vitoria.png') , 'derrota': pygame.image.load('img/derrota.png'),
         'papel' : [pygame.image.load('img/papel.png')],
         'cama': [pygame.image.load('img/cama.png')],
         'clock': [pygame.image.load('img/clock.png')],
@@ -40,12 +40,16 @@ def inicializa ():
         'estante': [pygame.image.load('img/estante.png')],
         'interacao' : pygame.mixer.Sound('sound/item.wav'),
         'door' : pygame.mixer.Sound('sound/door.flac'),
-        'tutorial': pygame.image.load('img/tutorial.png')
+        'tutorial': pygame.image.load('img/tutorial.png'),
+        'som1' : pygame.mixer.Sound('sound/Antena _de _alto_ganho.mp3'),
+        'som2' : pygame.mixer.Sound('sound/Escudo_Termico.mp3'),
+        'som3' : pygame.mixer.Sound('sound/Painel_Solar.mp3'),
+        'som4' : pygame.mixer.Sound('sound/Sistema_de_refrigeração.mp3')
     } 
     state = {             #Aqui criamos a lista de itens para cada fase, passando eles dentro da classe Item, a qual passamos tudo que é necessário para cada ítem, que inclui sua imagem, dica e posição.
     'jogador' : Player(360, 240),
     'lista de itens1' :[Item(assets['bolinha de papel'], (1073,696), pygame.image.load('img/dica_fase1.png')), Item(assets['cama'], (34,469), pygame.image.load('img/cama_dica.png')), Item(assets['mesa1'], (1033,463), pygame.image.load('img/mesa1_dica.png')), Item(assets['clock'], (526,13), pygame.image.load('img/clock_dica.png'))], 
-    'lista de itens2' :[Item(assets['papel'], (1073,700), pygame.image.load('img/dica_fase2.png')), Item(assets['computador'], (128,51), pygame.image.load('img/computador_dica.png')), Item(assets['cama'], (34,469), pygame.image.load('img/cama_dica.png')), Item(assets['mesa2'], (321,772), pygame.image.load('img/mesa1_dica.png')), Item(assets['clock'], (526,13), pygame.image.load('img/clock_dica.png')), Item(assets['disquete'], (237,633), pygame.image.load('img/disquete_dica.png'))], 
+    'lista de itens2' :[Item(assets['papel'], (1073,700), pygame.image.load('img/dica_fase2.png')),Item(assets['disquete'], (237,633), pygame.image.load('img/disquete_dica.png'))], 
     'lista de itens3' :[Item(assets['celular'], (1064,527), pygame.image.load('img/celular_dica.png')), Item(assets['tv'], (684,62), pygame.image.load('img/tv_dica.png')), Item(assets['estante'], (237,23), pygame.image.load('img/estante_dica.png')), Item(assets['computador'], (843,35), pygame.image.load('img/computador2_dica.png')), Item(assets['mesa2'], (321,772), pygame.image.load('img/copo_dica.png'))],
     'primeiro_tempo'  :0,
     'last_enter': 0,
@@ -66,8 +70,8 @@ def inicializa ():
 
     telas = {   #Criamos a tela de cada fase, passaremos ela na classe Tela onde desenhamos as alterações
         'menu_principal': Tela(assets['menu_principal'],[],[],portas['menu_principal']),
-        'SEGUNDA FASE' : Tela(assets['mapa'][2], state['lista de itens2'],[Item_movel(assets['bolinha de papel'], [1900,696])],portas['SEGUNDA FASE']), 
-        'PRIMEIRA FASE' : Tela(assets['mapa'][0], state['lista de itens1'],[Item_movel(assets['bolinha de papel'], [1900,696]),Item_movel(assets['papel'], [1900,600])], portas['PRIMEIRA FASE']),
+        'SEGUNDA FASE' : Tela(assets['mapa'][2], state['lista de itens2'],[],portas['SEGUNDA FASE']), 
+        'PRIMEIRA FASE' : Tela(assets['mapa'][0], state['lista de itens1'],[Item_movel(assets['bolinha de papel'], [1900,696],1,assets['som1']), Item_movel(assets['papel'], [1900,600],2, assets['som2']),Item_movel(assets['bolinha de papel'], [1900,696],1,assets['som1']), Item_movel(assets['papel'], [1900,600],2, assets['som4'])], portas['PRIMEIRA FASE']),
         'TERCEIRA FASE' : Tela(assets['mapa'][3], state['lista de itens3'], [],portas['TERCEIRA FASE']),
         'VITORIA': Tela(assets['vitoria'],[],[], portas['menu_principal']),
         'DERROTA':Tela(assets['derrota'],[], [],portas['menu_principal'])

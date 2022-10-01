@@ -119,12 +119,15 @@ class Tela:
                     if ev.key == pygame.K_SPACE and state['jogador'].pode_abrir(item) and (item.status == False): # Verifica se o jogador pode interagir com intens.
                            
                         item.status = True
+                        item.audio = True 
+                        pygame.mixer.Sound.play(item.som)
+                        
                         pygame.mixer.Sound.play(assets['interacao']) # Efeito sonoro das interacoes
 
                     elif ev.key == pygame.K_SPACE and item.status:
                         item.status = False
                 for item in self.itens_moveis  :
-                    if pygame.Rect.colliderect(state['nave'].rect, item) :
+                    if pygame.Rect.colliderect(state['nave'].rect, item) and state['nave'].status == item.nave_status-1:
 
                         state['nave'].status += 1
 
@@ -164,14 +167,17 @@ class Item :
 
 class Item_movel :
     '''CRIACAO DA CLASSE DOS ITENS DO JOGO'''
-    def __init__(self, img, ponto):  
+    def __init__(self, img, ponto, n, som):  
         '''PASSAMOS TODOS OS PARAMETROS PARA A CRIACAO DOS ITENS nao estaticos'''
 
         self.img = img
+        self.som = som
         self.ponto = ponto
         self.larg, self.alt = self.img[0].get_size()
         self.rect = pygame.Rect(ponto, (self.larg, self.alt))
         self.status = False
+        self.nave_status = n
+        self.audio = False
 
 class Nave :
 
