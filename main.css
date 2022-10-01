@@ -955,3 +955,13 @@ html {
   }
   
   /* :D */
+
+
+
+  .rotateimg180 {
+    -webkit-transform:rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    transform: rotate(225deg);
+  }
