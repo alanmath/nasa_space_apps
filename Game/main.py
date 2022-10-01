@@ -25,7 +25,7 @@ def inicializa ():
         'ladoe' : [pygame.image.load('img/lado_e.png'), pygame.image.load('img/lado_anda_e.png'), pygame.image.load('img/lado_anda_e2.png')],
         'mapa' : [pygame.image.load('img/WhatsApp Image 2022-10-01 at 17.53.13.jpeg'), pygame.image.load('img/menu.png'), pygame.image.load('img/fase2.png'), pygame.image.load('img/fase3.png')],
         'key' : [pygame.image.load('img/papeis.png')],
-        "porta" : pygame.image.load('img/porta.png'),
+        "porta" : pygame.image.load('img/pc.png'),
         'menu_principal': pygame.image.load('img/inicio.jpeg'), 'vitoria': pygame.image.load('img/vitoria.png') , 'derrota': pygame.image.load('img/derrota.png'),
         'papel' : [pygame.image.load('img/papel.png')],
         'cama': [pygame.image.load('img/cama.png')],
