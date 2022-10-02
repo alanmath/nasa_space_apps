@@ -9,7 +9,7 @@ def inicializa ():
     pygame.init()
     pygame.mixer.init() 
     pygame.mixer.music.load("sound/music.mp3") 
-    pygame.mixer.music.set_volume(0.6) 
+    pygame.mixer.music.set_volume(0.3) 
     pygame.mixer.music.play(-1)
 
     pygame.display.set_caption("Code Scape")
@@ -23,10 +23,10 @@ def inicializa ():
         'frente' : [pygame.image.load('img/frente.png'), pygame.image.load('img/frente_anda_d.png'), pygame.image.load('img/frente_anda_e.png')],
         'ladod' : [pygame.image.load('img/lado_d.png'), pygame.image.load('img/lado_anda_d.png'), pygame.image.load('img/lado_anda_d2.png')],
         'ladoe' : [pygame.image.load('img/lado_e.png'), pygame.image.load('img/lado_anda_e.png'), pygame.image.load('img/lado_anda_e2.png')],
-        'mapa' : [pygame.image.load('img/WhatsApp Image 2022-10-01 at 17.53.13.jpeg'), pygame.image.load('img/menu.png'), pygame.image.load('img/fase2.png'), pygame.image.load('img/fase3.png')],
+        'mapa' : [pygame.image.load('img/fase1.png'), pygame.image.load('img/menu.png'), pygame.image.load('img/fase2.png'), pygame.image.load('img/fase3.png')],
         'key' : [pygame.image.load('img/papeis.png')],
         "porta" : pygame.image.load('img/pc.png'),
-        'menu_principal': pygame.image.load('img/inicio.jpeg'), 'vitoria': pygame.image.load('img/vitoria.png') , 'derrota': pygame.image.load('img/derrota.png'),
+        'menu_principal': pygame.image.load('img/inicio.jpeg'), 'vitoria': pygame.image.load('img/vitoria.jpeg') , 'derrota': pygame.image.load('img/derrota.png'),
         'papel' : [pygame.image.load('img/papel.png')],
         'cama': [pygame.image.load('img/cama.png')],
         'clock': [pygame.image.load('img/clock.png')],
@@ -44,11 +44,21 @@ def inicializa ():
         'som1' : pygame.mixer.Sound('sound/Antena _de _alto_ganho.mp3'),
         'som2' : pygame.mixer.Sound('sound/Escudo_Termico.mp3'),
         'som3' : pygame.mixer.Sound('sound/Painel_Solar.mp3'),
-        'som4' : pygame.mixer.Sound('sound/Sistema_de_refrigeração.mp3')
+        'som4' : pygame.mixer.Sound('sound/Sistema_de_refrigeração.mp3'),
+        'nave0' : pygame.image.load('img/sonda/0.png'),
+        'nave1' : pygame.image.load('img/sonda/1.png'),
+        'nave2' : pygame.image.load('img/sonda/2.png'),
+        'nave3' : pygame.image.load('img/sonda/3.png'),
+        'nave4' : pygame.image.load('img/sonda/4.png'),
+        
+        'i1' : [pygame.image.load('img/sonda/i1.png')],
+        'i2' : [pygame.image.load('img/sonda/i2.png')],
+        'i3' : [pygame.image.load('img/sonda/i3.png')],
+        'i4' : [pygame.image.load('img/sonda/i4.png')],
     } 
     state = {             #Aqui criamos a lista de itens para cada fase, passando eles dentro da classe Item, a qual passamos tudo que é necessário para cada ítem, que inclui sua imagem, dica e posição.
     'jogador' : Player(360, 240),
-    'lista de itens1' :[Item(assets['bolinha de papel'], (1073,696), pygame.image.load('img/dica_fase1.png')), Item(assets['cama'], (34,469), pygame.image.load('img/cama_dica.png')), Item(assets['mesa1'], (1033,463), pygame.image.load('img/mesa1_dica.png')), Item(assets['clock'], (526,13), pygame.image.load('img/clock_dica.png'))], 
+    'lista de itens1' :[], 
     'lista de itens2' :[Item(assets['papel'], (1073,700), pygame.image.load('img/dica_fase2.png')),Item(assets['disquete'], (237,633), pygame.image.load('img/disquete_dica.png'))], 
     'lista de itens3' :[Item(assets['celular'], (1064,527), pygame.image.load('img/celular_dica.png')), Item(assets['tv'], (684,62), pygame.image.load('img/tv_dica.png')), Item(assets['estante'], (237,23), pygame.image.load('img/estante_dica.png')), Item(assets['computador'], (843,35), pygame.image.load('img/computador2_dica.png')), Item(assets['mesa2'], (321,772), pygame.image.load('img/copo_dica.png'))],
     'primeiro_tempo'  :0,
@@ -56,7 +66,7 @@ def inicializa ():
     'troca_status_move':0,      #Variáveis usadas em condições do jogo
     'numero_trocador':0,
     'tempo_geral': 0 ,
-    'nave' : Nave([assets['bolinha de papel'][0], assets['papel'][0]])
+    'nave' : Nave([assets['nave0'],assets['nave1'],assets['nave2'],assets['nave3']])
     }
     
     portas = {  #Nesse dicionário portas passamos tudo necessário às portas do jogo, como imagem, posição, texto e senha.
@@ -71,7 +81,7 @@ def inicializa ():
     telas = {   #Criamos a tela de cada fase, passaremos ela na classe Tela onde desenhamos as alterações
         'menu_principal': Tela(assets['menu_principal'],[],[],portas['menu_principal']),
         'SEGUNDA FASE' : Tela(assets['mapa'][2], state['lista de itens2'],[],portas['SEGUNDA FASE']), 
-        'PRIMEIRA FASE' : Tela(assets['mapa'][0], state['lista de itens1'],[Item_movel(assets['bolinha de papel'], [1900,696],1,assets['som1']), Item_movel(assets['papel'], [1900,600],2, assets['som2']),Item_movel(assets['bolinha de papel'], [1900,696],1,assets['som1']), Item_movel(assets['papel'], [1900,600],2, assets['som4'])], portas['PRIMEIRA FASE']),
+        'PRIMEIRA FASE' : Tela(assets['mapa'][0], state['lista de itens1'],[Item_movel(assets['i1'], [1450,696],1,assets['som1']), Item_movel(assets['i2'], [400,600],2, assets['som4']),Item_movel(assets['i3'], [800,800],3,assets['som3']), Item_movel(assets['i4'], [890,200],4, assets['som2'])], portas['menu_principal']),
         'TERCEIRA FASE' : Tela(assets['mapa'][3], state['lista de itens3'], [],portas['TERCEIRA FASE']),
         'VITORIA': Tela(assets['vitoria'],[],[], portas['menu_principal']),
         'DERROTA':Tela(assets['derrota'],[], [],portas['menu_principal'])
@@ -128,9 +138,9 @@ def desenha (window, assets, state, portas):
         window.blit(item_movel.img[0], item_movel.ponto) #-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
             
+    if state['jogador'].status == 'PRIMEIRA FASE' :
+        window.blit(state['nave'].img[state['nave'].status], state['nave'].ponto)
 
-    window.blit(state['nave'].img[state['nave'].status], state['nave'].ponto)
-            
 
     for itens in state['tela atual'].itens:   # Estrutura de for que controla a animação dos itens caso eles tenham animação. 
         
@@ -169,8 +179,7 @@ def desenha (window, assets, state, portas):
         portas[fase].desenha(window, fase, portas)
 
     if fase == 'VITORIA':  # Verifica se o jogador venceu para assim desenhar a tela de vitória e o tempo em que resolveu os desafios
-        venceu = BASE.render(state['tempo_final'], True, ROSA)
-        window.blit(venceu, (259, 725))
+        state['jogador'].status = 'VITORIA'
         
     pygame.display.update()
 
