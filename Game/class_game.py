@@ -69,7 +69,7 @@ class Tela:
                             
                
                         elif self.porta.user_text.strip().lower() == self.porta.senha and state['jogador'].status == 'SEGUNDA FASE':
-                            state['jogador'].status = 'TERCEIRA FASE'
+                            state['jogador'].status = 'VITORIA'
                             state['jogador'].passou_menu = True
                             state['last_enter'] = pygame.time.get_ticks()
                             pygame.mixer.Sound.play(assets['door']) # Efeito sonoro da porta quando a senha está certa
@@ -132,6 +132,10 @@ class Tela:
                         state['nave'].status += 1
 
                         del self.itens_moveis[self.itens_moveis.index(item)]
+
+                        if state['nave'].status == 4 :
+                            state['jogador'].status = 'SEGUNDA FASE'
+                            state['jogador'].passou_menu = True
 
                     # else :
                     #     item.status = False
