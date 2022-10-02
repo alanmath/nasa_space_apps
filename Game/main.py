@@ -71,7 +71,7 @@ def inicializa ():
     
     portas = {  #Nesse dicionário portas passamos tudo necessário às portas do jogo, como imagem, posição, texto e senha.
         'PRIMEIRA FASE' : Porta(assets['porta'], (987, 21), "A SENHA é mais facil do que parece!","Digite e tecle ENTER", "senha"),  
-        'SEGUNDA FASE' : Porta(assets['porta'], (987, 21), "As dicas estão por ai...","Digite e tecle ENTER", "12/01/1986"),
+        'SEGUNDA FASE' : Porta(assets['porta'], (987, 21), "Para controlar o PARKER","Digite a senha e tecle ENTER", "12/01/1986"),
         'TERCEIRA FASE' : Porta(assets['porta'], (987, 21), "Numeros nào servem pra nada...","Digite e tecle ENTER", "toshi"),
         'menu_principal': Porta(assets['porta'],(-500,-500), "vapo","mensagem2","no"),
         'VITORIA': Porta(assets['porta'],(-500,-500), "vapo","mensagem2","no"),
