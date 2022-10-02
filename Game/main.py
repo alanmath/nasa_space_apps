@@ -1,3 +1,16 @@
+import os, sys 
+
+dirpath = os.getcwd()
+
+sys.path.append(dirpath)
+if getattr(sys, 'frozen', False) :
+    os.chdir(sys._MEIPASS)
+
+
+
+
+
+
 import pygame
 from class_game import *
 from  time import sleep
@@ -8,7 +21,7 @@ def inicializa ():
     """INICIO DO JOGO! CARREGAMOS TODAS AS INFORMAÇÕES NECESSÁRIAS PARA O FUNCIONAMENTO"""
     pygame.init()
     pygame.mixer.init() 
-    pygame.mixer.music.load("sound/music.mp3") 
+    pygame.mixer.music.load("data/sound/music.mp3") 
     pygame.mixer.music.set_volume(0.3) 
     pygame.mixer.music.play(-1)
 
@@ -18,49 +31,49 @@ def inicializa ():
     window = pygame.display.set_mode((1920, 1080))
     
     assets = {             #Carregamos todas as imagens necessárias para o jogo
-        'player' : pygame.image.load('img/frente.png'),
-        'costa' : [pygame.image.load('img/costa.png'), pygame.image.load('img/costa_anda_d.png'), pygame.image.load('img/costa_anda_e.png')],
-        'frente' : [pygame.image.load('img/frente.png'), pygame.image.load('img/frente_anda_d.png'), pygame.image.load('img/frente_anda_e.png')],
-        'ladod' : [pygame.image.load('img/lado_d.png'), pygame.image.load('img/lado_anda_d.png'), pygame.image.load('img/lado_anda_d2.png')],
-        'ladoe' : [pygame.image.load('img/lado_e.png'), pygame.image.load('img/lado_anda_e.png'), pygame.image.load('img/lado_anda_e2.png')],
-        'mapa' : [pygame.image.load('img/fase1.png'), pygame.image.load('img/menu.png'), pygame.image.load('img/fase2.png'), pygame.image.load('img/fase3.png')],
-        'key' : [pygame.image.load('img/papeis.png')],
-        "porta" : pygame.image.load('img/pc.png'),
-        'menu_principal': pygame.image.load('img/inicio.jpeg'), 'vitoria': pygame.image.load('img/vitoria.jpeg') , 'derrota': pygame.image.load('img/derrota.png'),
-        'papel' : [pygame.image.load('img/papel.png')],
-        'cama': [pygame.image.load('img/cama.png')],
-        'clock': [pygame.image.load('img/clock.png')],
-        'mesa1': [pygame.image.load('img/mesa1.png')],
-        'bolinha de papel' : [pygame.image.load('img/bola.png')],
-        'computador' : [pygame.image.load('img/computador.png'), pygame.image.load('img/computador2.png')],
-        'mesa2':[pygame.image.load('img/mesa2.png')],
-        'disquete':[pygame.image.load('img/disquete.png')],
-        'celular':[pygame.image.load('img/celular.png')],
-        'tv':[pygame.image.load('img/tv.png'), pygame.image.load('img/tv2.png')],
-        'estante': [pygame.image.load('img/estante.png')],
-        'interacao' : pygame.mixer.Sound('sound/item.wav'),
-        'door' : pygame.mixer.Sound('sound/door.flac'),
-        'tutorial': pygame.image.load('img/tutorial.png'),
-        'som1' : pygame.mixer.Sound('sound/Antena _de _alto_ganho.mp3'),
-        'som2' : pygame.mixer.Sound('sound/Escudo_Termico.mp3'),
-        'som3' : pygame.mixer.Sound('sound/Painel_Solar.mp3'),
-        'som4' : pygame.mixer.Sound('sound/Sistema_de_refrigeração.mp3'),
-        'nave0' : pygame.image.load('img/sonda/0.png'),
-        'nave1' : pygame.image.load('img/sonda/1.png'),
-        'nave2' : pygame.image.load('img/sonda/2.png'),
-        'nave3' : pygame.image.load('img/sonda/3.png'),
-        'nave4' : pygame.image.load('img/sonda/4.png'),
+        'player' : pygame.image.load('data/img/frente.png'),
+        'costa' : [pygame.image.load('data/img/costa.png'), pygame.image.load('data/img/costa_anda_d.png'), pygame.image.load('data/img/costa_anda_e.png')],
+        'frente' : [pygame.image.load('data/img/frente.png'), pygame.image.load('data/img/frente_anda_d.png'), pygame.image.load('data/img/frente_anda_e.png')],
+        'ladod' : [pygame.image.load('data/img/lado_d.png'), pygame.image.load('data/img/lado_anda_d.png'), pygame.image.load('data/img/lado_anda_d2.png')],
+        'ladoe' : [pygame.image.load('data/img/lado_e.png'), pygame.image.load('data/img/lado_anda_e.png'), pygame.image.load('data/img/lado_anda_e2.png')],
+        'mapa' : [pygame.image.load('data/img/fase1.png'), pygame.image.load('data/img/menu.png'), pygame.image.load('data/img/fase2.png'), pygame.image.load('data/img/fase3.png')],
+        'key' : [pygame.image.load('data/img/papeis.png')],
+        "porta" : pygame.image.load('data/img/pc.png'),
+        'menu_principal': pygame.image.load('data/img/inicio.jpeg'), 'vitoria': pygame.image.load('data/img/vitoria.jpeg') , 'derrota': pygame.image.load('data/img/derrota.png'),
+        'papel' : [pygame.image.load('data/img/papel.png')],
+        'cama': [pygame.image.load('data/img/cama.png')],
+        'clock': [pygame.image.load('data/img/clock.png')],
+        'mesa1': [pygame.image.load('data/img/mesa1.png')],
+        'bolinha de papel' : [pygame.image.load('data/img/bola.png')],
+        'computador' : [pygame.image.load('data/img/computador.png'), pygame.image.load('data/img/computador2.png')],
+        'mesa2':[pygame.image.load('data/img/mesa2.png')],
+        'disquete':[pygame.image.load('data/img/disquete.png')],
+        'celular':[pygame.image.load('data/img/celular.png')],
+        'tv':[pygame.image.load('data/img/tv.png'), pygame.image.load('data/img/tv2.png')],
+        'estante': [pygame.image.load('data/img/estante.png')],
+        'interacao' : pygame.mixer.Sound('data/sound/item.wav'),
+        'door' : pygame.mixer.Sound('data/sound/door.flac'),
+        'tutorial': pygame.image.load('data/img/tutorial.png'),
+        'som1' : pygame.mixer.Sound('data/sound/Antena _de _alto_ganho.mp3'),
+        'som2' : pygame.mixer.Sound('data/sound/Escudo_Termico.mp3'),
+        'som3' : pygame.mixer.Sound('data/sound/Painel_Solar.mp3'),
+        'som4' : pygame.mixer.Sound('data/sound/Sistema_de_refrigeração.mp3'),
+        'nave0' : pygame.image.load('data/img/sonda/0.png'),
+        'nave1' : pygame.image.load('data/img/sonda/1.png'),
+        'nave2' : pygame.image.load('data/img/sonda/2.png'),
+        'nave3' : pygame.image.load('data/img/sonda/3.png'),
+        'nave4' : pygame.image.load('data/img/sonda/4.png'),
         
-        'i1' : [pygame.image.load('img/sonda/i1.png')],
-        'i2' : [pygame.image.load('img/sonda/i2.png')],
-        'i3' : [pygame.image.load('img/sonda/i3.png')],
-        'i4' : [pygame.image.load('img/sonda/i4.png')],
+        'i1' : [pygame.image.load('data/img/sonda/i1.png')],
+        'i2' : [pygame.image.load('data/img/sonda/i2.png')],
+        'i3' : [pygame.image.load('data/img/sonda/i3.png')],
+        'i4' : [pygame.image.load('data/img/sonda/i4.png')],
     } 
     state = {             #Aqui criamos a lista de itens para cada fase, passando eles dentro da classe Item, a qual passamos tudo que é necessário para cada ítem, que inclui sua imagem, dica e posição.
     'jogador' : Player(360, 240),
     'lista de itens1' :[], 
-    'lista de itens2' :[Item(assets['papel'], (1073,700), pygame.image.load('img/dica_fase2.png')),Item(assets['disquete'], (237,633), pygame.image.load('img/disquete_dica.png'))], 
-    'lista de itens3' :[Item(assets['celular'], (1064,527), pygame.image.load('img/celular_dica.png')), Item(assets['tv'], (684,62), pygame.image.load('img/tv_dica.png')), Item(assets['estante'], (237,23), pygame.image.load('img/estante_dica.png')), Item(assets['computador'], (843,35), pygame.image.load('img/computador2_dica.png')), Item(assets['mesa2'], (321,772), pygame.image.load('img/copo_dica.png'))],
+    'lista de itens2' :[Item(assets['papel'], (1073,700), pygame.image.load('data/img/dica_fase2.png')),Item(assets['disquete'], (237,633), pygame.image.load('data/img/disquete_dica.png'))], 
+    'lista de itens3' :[Item(assets['celular'], (1064,527), pygame.image.load('data/img/celular_dica.png')), Item(assets['tv'], (684,62), pygame.image.load('data/img/tv_dica.png')), Item(assets['estante'], (237,23), pygame.image.load('data/img/estante_dica.png')), Item(assets['computador'], (843,35), pygame.image.load('data/img/computador2_dica.png')), Item(assets['mesa2'], (321,772), pygame.image.load('data/img/copo_dica.png'))],
     'primeiro_tempo'  :0,
     'last_enter': 0,
     'troca_status_move':0,      #Variáveis usadas em condições do jogo
